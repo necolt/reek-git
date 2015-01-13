@@ -46,17 +46,10 @@ module RuboCop
       end
 
       def display_violations(io)
-        formatter = RuboCop::Formatter::ClangStyleFormatter.new(io)
-        formatter.started(nil)
-
-        violations.map do |violation|
-          formatter.file_finished(
-            violation.filename,
-            violation.offenses.compact.sort.freeze
-          )
+        formatter = ::Reek::Cli::Report::SingleLineWarningFormatter
+        violations.each do |violation|
+          io.puts(::Reek::Cli::Report::Formatter.format_list(violation.offenses, formatter))
         end
-
-        formatter.finished(@files.map(&:filename).freeze)
       end
     end
   end

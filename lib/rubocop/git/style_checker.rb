@@ -15,7 +15,6 @@ class StyleChecker
     file_violations = @modified_files.map do |modified_file|
       FileViolation.new(modified_file.filename, offenses(modified_file))
     end
-
     file_violations.select do |file_violation|
       file_violation.offenses.any?
     end
@@ -30,7 +29,9 @@ class StyleChecker
 
   def violations_on_changed_lines(modified_file, violations)
     violations.select do |violation|
-      modified_file.relevant_line?(violation.line)
+      violation.lines.any? do |line|
+        modified_file.relevant_line?(line)
+      end
     end
   end
 

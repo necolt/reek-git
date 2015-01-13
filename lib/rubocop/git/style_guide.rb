@@ -11,10 +11,7 @@ class StyleGuide
     if ignored_file?(file)
       []
     else
-      parsed_source = parse_source(file)
-      cops = RuboCop::Cop::Cop.all
-      team = RuboCop::Cop::Team.new(cops, config, rubocop_options)
-      team.inspect_file(parsed_source)
+      ::Reek::Examiner.new(Reek::Source::SourceFile.new(file.filename)).smells
     end
   end
 

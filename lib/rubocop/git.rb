@@ -1,5 +1,7 @@
 require 'rubocop/git/version'
 require 'rubocop'
+require 'reek'
+require 'reek/cli/report/formatter'
 
 module RuboCop
   module Git
