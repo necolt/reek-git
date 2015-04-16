@@ -11,7 +11,7 @@ module RuboCop
         @files = DiffParser.parse(git_diff(options))
 
         display_violations($stdout)
-        
+
         exit(1) if violations.any?
       end
 
@@ -46,9 +46,10 @@ module RuboCop
       end
 
       def display_violations(io)
-        formatter = ::Reek::Cli::Report::SingleLineWarningFormatter
+        formatter = Reek::CLI::Report::SimpleWarningFormatter
+        location_formatter = Reek::CLI::Report::SingleLineLocationFormatter
         violations.each do |violation|
-          io.puts(::Reek::Cli::Report::Formatter.format_list(violation.offenses, formatter))
+          io.puts(Reek::CLI::Report::Formatter.format_list(violation.offenses, formatter.new(location_formatter)))
         end
       end
     end
