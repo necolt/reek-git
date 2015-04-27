@@ -11,7 +11,7 @@ class StyleGuide
     if ignored_file?(file)
       []
     else
-      Reek::Examiner.new(Reek::Source::SourceCode.new(file.content, file.filename)).smells
+      Reek::Core::Examiner.new(Reek::Source::SourceCode.new(file.content, file.filename)).smells
     end
   end
 
