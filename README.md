@@ -8,7 +8,7 @@ Reek for git diff.
 
 Add this line to your application's Gemfile:
 
-    gem 'reek-git', github: 'sauliusgrigaitis/reek-git'
+    gem 'reek-git', github: 'necolt/reek-git'
 
 And then execute:
 
