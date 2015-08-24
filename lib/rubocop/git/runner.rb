@@ -46,10 +46,10 @@ module RuboCop
       end
 
       def display_violations(io)
-        formatter = Reek::CLI::Report::SimpleWarningFormatter
-        location_formatter = Reek::CLI::Report::SingleLineLocationFormatter
+        formatter = Reek::Report::SimpleWarningFormatter
+        location_formatter = Reek::Report::SingleLineLocationFormatter
         violations.each do |violation|
-          io.puts(Reek::CLI::Report::Formatter.format_list(violation.offenses, formatter.new(location_formatter)))
+          io.puts(Reek::Report::Formatter.format_list(violation.offenses, formatter.new(location_formatter)))
         end
       end
     end
