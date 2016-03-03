@@ -1,4 +1,4 @@
-This is quick https://github.com/m4i/reek-git port to Reek. 
+This is quick https://github.com/m4i/rubocop-git port to Reek.
 
 # Reek::Git
 
@@ -19,15 +19,12 @@ And then execute:
     Usage: reek-git [options] [[commit] commit]
         -c, --config FILE                Specify configuration file
         -r, --require FILE               Require Ruby file
-        -d, --debug                      Display debug info
-        -D, --display-cop-names          Display cop names in offense messages
             --cached                     git diff --cached
             --staged                     synonym of --cached
-            --hound                      Hound compatibility mode
 
 ## Contributing
 
-1. Fork it ( https://github.com/sauliusgrigaitis/reek-git/fork )
+1. Fork it ( https://github.com/necolt/reek-git/fork )
 2. Create your feature branch (`git checkout -b my-new-feature`)
 3. Commit your changes (`git commit -am 'Add some feature'`)
 4. Push to the branch (`git push origin my-new-feature`)

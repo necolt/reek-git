@@ -1,7 +1,5 @@
 #!/usr/bin/env ruby
 
-$:.unshift File.join(File.dirname(__FILE__), '..', 'lib').to_s
-
 require 'reek/git/cli'
 
 Reek::Git::CLI.new.run
