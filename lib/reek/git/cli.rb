@@ -1,7 +1,7 @@
-require 'rubocop/git'
+require 'reek/git'
 require 'optparse'
 
-module RuboCop
+module Reek
   module Git
     class CLI
       def run(args = ARGV)
@@ -25,23 +25,9 @@ module RuboCop
         @option_parser ||= OptionParser.new do |opt|
           opt.banner << ' [[commit] commit]'
 
-          opt.on('-c', '--config FILE',
-                 'Specify configuration file') do |config|
-            @options.config = config
-          end
-
           opt.on('-r', '--require FILE',
                  'Require Ruby file') do |file|
             require file
-          end
-
-          opt.on('-d', '--debug', 'Display debug info') do
-            @options.rubocop[:debug] = true
-          end
-
-          opt.on('-D', '--display-cop-names',
-                 'Display cop names in offense messages') do
-            @options.rubocop[:display_cop_names] = true
           end
 
           opt.on('--cached', 'git diff --cached') do
@@ -50,10 +36,6 @@ module RuboCop
 
           opt.on('--staged', 'synonym of --cached') do
             @options.cached = true
-          end
-
-          opt.on('--hound', 'Hound compatibility mode') do
-            @options.hound = true
           end
         end
       end

@@ -1,4 +1,4 @@
-module RuboCop::Git
+module Reek::Git
 # copy from https://github.com/thoughtbot/hound/blob/d2f3933/app/models/patch.rb
 class Patch
   RANGE_INFORMATION_LINE = /^@@ .+\+(?<line_number>\d+),/

@@ -1,4 +1,4 @@
-module RuboCop
+module Reek
   module Git
     # ref. https://github.com/thoughtbot/hound/blob/d2f3933/app/models/pull_request.rb
     class PseudoPullRequest

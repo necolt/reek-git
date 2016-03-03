@@ -1,4 +1,4 @@
-module RuboCop
+module Reek
   module Git
     class DiffParser
       class << self

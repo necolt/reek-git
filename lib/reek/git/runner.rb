@@ -1,6 +1,6 @@
 require 'shellwords'
 
-module RuboCop
+module Reek
   module Git
     # ref. https://github.com/thoughtbot/hound/blob/d2f3933/app/services/build_runner.rb
     class Runner
@@ -22,10 +22,7 @@ module RuboCop
       end
 
       def style_checker
-        StyleChecker.new(pull_request.pull_request_files,
-                         @options.rubocop,
-                         @options.config_file,
-                         pull_request.config)
+        StyleChecker.new(pull_request.pull_request_files)
       end
 
       def pull_request
@@ -49,7 +46,7 @@ module RuboCop
         formatter = Reek::Report::SimpleWarningFormatter
         location_formatter = Reek::Report::SingleLineLocationFormatter
         violations.each do |violation|
-          io.puts(Reek::Report::Formatter.format_list(violation.offenses, formatter.new(location_formatter)))
+          io.puts(Reek::Report::Formatter.format_list(violation.offenses, formatter: formatter.new(location_formatter: location_formatter)))
         end
       end
     end

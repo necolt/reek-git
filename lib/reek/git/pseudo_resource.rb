@@ -1,4 +1,4 @@
-module RuboCop
+module Reek
   module Git
     class PseudoResource
       attr_reader :filename, :patch

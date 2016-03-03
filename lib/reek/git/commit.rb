@@ -1,6 +1,6 @@
 require 'shellwords'
 
-module RuboCop
+module Reek
   module Git
     # ref. https://github.com/thoughtbot/hound/blob/d2f3933/app/models/commit.rb
     class Commit

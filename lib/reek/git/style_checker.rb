@@ -1,14 +1,8 @@
-module RuboCop::Git
+module Reek::Git
 # ref. https://github.com/thoughtbot/hound/blob/d2f3933/app/models/style_checker.rb
 class StyleChecker
-  def initialize(modified_files,
-                 rubocop_options,
-                 config_file,
-                 custom_config = nil)
+  def initialize(modified_files)
     @modified_files = modified_files
-    @rubocop_options = rubocop_options
-    @config_file = config_file
-    @custom_config = custom_config
   end
 
   def violations
@@ -16,6 +10,7 @@ class StyleChecker
       FileViolation.new(modified_file.filename, offenses(modified_file))
     end
     file_violations.select do |file_violation|
+
       file_violation.offenses.any?
     end
   end
@@ -23,8 +18,13 @@ class StyleChecker
   private
 
   def offenses(modified_file)
-    violations = style_guide.violations(modified_file)
-    violations_on_changed_lines(modified_file, violations)
+    file_name = modified_file.filename
+    if File.extname(file_name) == '.rb'
+      violations = Reek::Examiner.new(Pathname.new(file_name)).smells
+      violations_on_changed_lines(modified_file, violations)
+    else
+      []
+    end
   end
 
   def violations_on_changed_lines(modified_file, violations)
@@ -33,12 +33,6 @@ class StyleChecker
         modified_file.relevant_line?(line)
       end
     end
-  end
-
-  def style_guide
-    @style_guide ||= StyleGuide.new(@rubocop_options,
-                                    @config_file,
-                                    @custom_config)
   end
 end
 end

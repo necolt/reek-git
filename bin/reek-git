@@ -1,5 +1,7 @@
 #!/usr/bin/env ruby
 
-require 'rubocop/git/cli'
+$:.unshift File.join(File.dirname(__FILE__), '..', 'lib').to_s
 
-RuboCop::Git::CLI.new.run
+require 'reek/git/cli'
+
+Reek::Git::CLI.new.run

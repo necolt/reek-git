@@ -1,4 +1,4 @@
-This is quick https://github.com/m4i/rubocop-git port to Reek. 
+This is quick https://github.com/m4i/reek-git port to Reek. 
 
 # Reek::Git
 
