@@ -17,7 +17,6 @@ And then execute:
 ## Usage
 
     Usage: reek-git [options] [[commit] commit]
-        -c, --config FILE                Specify configuration file
         -r, --require FILE               Require Ruby file
             --cached                     git diff --cached
             --staged                     synonym of --cached
