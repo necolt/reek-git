@@ -43,10 +43,15 @@ module Reek
       end
 
       def display_violations(io)
-        formatter = Reek::Report::SimpleWarningFormatter
-        location_formatter = Reek::Report::SingleLineLocationFormatter
         violations.each do |violation|
-          io.puts(Reek::Report::Formatter.format_list(violation.offenses, formatter: formatter.new(location_formatter: location_formatter)))
+          io.puts(
+            Reek::Report::Formatter.format_list(
+              violation.offenses,
+              formatter: Reek::Report::Formatter::SimpleWarningFormatter.new(
+                location_formatter: Reek::Report::Formatter::SingleLineLocationFormatter
+              )
+            )
+          )
         end
       end
     end
