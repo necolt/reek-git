@@ -14,6 +14,7 @@ module Reek
     autoload :PseudoPullRequest, 'reek/git/pseudo_pull_request'
     autoload :PseudoResource,    'reek/git/pseudo_resource'
     autoload :Runner,            'reek/git/runner'
+    autoload :ReekEngineFacade,  'reek/git/reek_engine_facade'
     autoload :StyleChecker,      'reek/git/style_checker'
     autoload :StyleGuide,        'reek/git/style_guide'
   end
